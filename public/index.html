@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Water Ministries - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+<div class="logo-circle me-2">
+    <img src="Images/newlogo.jpeg" alt="Logo" width="170%">
+</div>
+                <span class="brand-text">Living Water Ministries</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+       
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Welcome to</h1>
+            <h2 class="display-3 fw-bold mb-4">Living Water Ministries</h2>
+            <p class="lead mb-5">A blog dedicated to sharing insights and reflections on faith, prayer, and spiritual growth</p>
+            
+            <!-- Decorative Waves -->
+            <div class="hero-waves">
+                <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+                    <path d="M0,100 Q300,50 600,100 T1200,100" fill="#d3a59f" opacity="0.3"/>
+                    <path d="M0,120 Q300,80 600,120 T1200,120" fill="#B8CCCA" opacity="0.3"/>
+                    <circle cx="400" cy="60" r="50" fill="#f4d1a6" opacity="0.5"/>
+                    <circle cx="700" cy="80" r="40" fill="#e0e0e0" opacity="0.5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories Carousel Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="text-center display-5 fw-bold mb-5">Featured Categories</h3>
+            
+            <!-- Carousel -->
+            <div id="categoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicators will be added by JavaScript -->
+                </div>
+                
+                <div class="carousel-inner" id="categoriesContainer">
+                    <!-- Loading spinner - will be replaced by JavaScript -->
+                    <div class="carousel-item active">
+                        <div class="text-center py-5">
+                            <div class="spinner"></div>
+                            <p class="text-muted mt-3">Loading categories...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#categoriesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#categoriesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts Section -->
+    <section class="py-5">
+        <div class="container">
+            <h3 class="text-center display-5 fw-bold mb-5">Latest Posts</h3>
+            <div class="row g-4" id="postsContainer">
+                <!-- Loading spinner - will be replaced by JavaScript -->
+                <div class="col-12 text-center">
+                    <div class="spinner"></div>
+                    <p class="text-muted mt-3">Loading posts...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="custom-footer text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Valid Point Technologies. All rights reserved.</p>
+            <p class="mb-0 mt-2">
+                <small>Vision: To see a people transformed by the power of the word of God.</small>
+            </p>
+            <a class="nav-link" href="/login">Admin</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Living Water Ministries</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+              <div class="logo-circle me-2">
+      <img src="Images/newlogo.jpeg" alt="Logo" width="170%">
+</div>
+                <span class="brand-text">Living Water Ministries</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">View Site</a></li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" id="logoutBtn">Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="display-5 fw-bold">Admin Dashboard</h1>
+            <p class="text-muted">Create and manage your blog posts and categories</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button">
+                    Manage Posts
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button">
+                    Manage Categories
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="adminTabsContent">
+            
+            <!-- POSTS TAB -->
+            <div class="tab-pane fade show active" id="posts" role="tabpanel">
+                <div class="admin-form">
+                    <h3 class="fw-bold mb-4">Create/Edit Post</h3>
+                    <form id="postForm" enctype="multipart/form-data">
+                        <input type="hidden" id="postId">
+                        
+                        <div class="form-section">
+                            <label for="postTitle">Post Title</label>
+                            <input type="text" class="form-control" id="postTitle" required placeholder="Enter post title">
+                        </div>
+
+                        <div class="form-section">
+                            <label for="postExcerpt">Excerpt (Brief Summary)</label>
+                            <textarea class="form-control" id="postExcerpt" rows="2" placeholder="Brief summary of the post"></textarea>
+                        </div>
+
+                        <div class="form-section">
+                            <label for="postContent">Content</label>
+                            <textarea class="form-control" id="postContent" rows="10" required placeholder="Write your post content here..."></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-section">
+                                    <label for="postCategory">Category</label>
+                                    <select class="form-control" id="postCategory" required>
+                                        <option value="">Select category...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-section">
+                                    <label for="postAuthor">Author</label>
+                                    <input type="text" class="form-control" id="postAuthor" value="Admin" placeholder="Author name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <label for="postImage">Featured Image</label>
+                            <input type="file" class="form-control" id="postImage" accept="image/*">
+                        </div>
+
+                        <div class="form-section">
+                            <button type="submit" class="btn-read-more">Publish Post</button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="document.getElementById('postForm').reset(); document.getElementById('postId').value='';">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="posts-list">
+                    <h3 class="fw-bold mb-4">Your Posts</h3>
+                    <div id="adminPostsList">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORIES TAB -->
+            <div class="tab-pane fade" id="categories" role="tabpanel">
+                <div class="admin-form">
+                    <h3 class="fw-bold mb-4">Add New Category</h3>
+                    <form id="categoryForm">
+                        <input type="hidden" id="categoryId">
+                        
+                        <div class="form-section">
+                            <label for="categoryName">Category Name</label>
+                            <input type="text" class="form-control" id="categoryName" required placeholder="e.g., Worship, Testimony, Bible Study">
+                        </div>
+
+                        <div class="form-section">
+                            <label for="categoryDescription">Description (Optional)</label>
+                            <textarea class="form-control" id="categoryDescription" rows="2" placeholder="Brief description of this category"></textarea>
+                        </div>
+
+                        <div class="form-section">
+                            <button type="submit" class="btn-read-more">Add Category</button>
+                            <button type="button" class="btn btn-secondary ms-2" onclick="document.getElementById('categoryForm').reset(); document.getElementById('categoryId').value='';">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="posts-list">
+                    <h3 class="fw-bold mb-4">Existing Categories</h3>
+                    <div id="adminCategoriesList">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="custom-footer text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Valid Point Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

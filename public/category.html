@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - Living Water Ministries</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light custom-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+              <div class="logo-circle me-2">
+      <img src="/Images/newlogo.jpeg" alt="Logo" width="170%">
+</div>
+                <span class="brand-text">Living Water Ministries</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+       
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Category Header -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3" id="categoryTitle">
+                <div class="spinner"></div>
+            </h1>
+            <p class="lead" id="categoryDescription"></p>
+            <a href="/" class="btn-read-more mt-3">← Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Posts Section -->
+    <section class="py-5">
+        <div class="container">
+            <h3 class="text-center display-5 fw-bold mb-5">Posts</h3>
+            <div class="row g-4" id="postsContainer">
+                <div class="col-12 text-center">
+                    <div class="spinner"></div>
+                    <p class="text-muted mt-3">Loading posts...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="custom-footer text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Valid Point Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
