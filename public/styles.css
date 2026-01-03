@@ -620,6 +620,40 @@ body {
     }
 }
 
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.navbar-toggler-icon {
+    margin-left: auto;
+}
+
+.input-group .form-control {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group-text {
+    background-color: white;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+}
+
+.input-group .form-control {
+    margin-bottom: 0;
+}
+
+.input-group-text {
+    margin-bottom: 0;
+}
+
+
 /* Print Styles */
 @media print {
     .navbar,

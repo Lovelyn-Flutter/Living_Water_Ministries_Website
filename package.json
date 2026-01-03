@@ -12,7 +12,7 @@
     "ministries",
     "faith"
   ],
-  "author": "Valid Point Technologies",
+  "author": "Valid Point Solutions",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

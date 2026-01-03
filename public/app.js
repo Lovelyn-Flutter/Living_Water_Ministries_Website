@@ -569,4 +569,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault(); 
         logout(); 
     });
+    
 });
