@@ -520,6 +520,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
     }
+
+  // Reset password form handler
+        const resetPasswordForm = document.getElementById('resetPasswordForm');
+    if (resetPasswordForm) {
+        resetPasswordForm.addEventListener('submit', handleResetPasswordSubmit);
+    }
     
     // Load content based on page
     if (path === '/' || path === '/index.html') {
@@ -569,5 +575,73 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.preventDefault(); 
         logout(); 
     });
+
+
+    // Reset Password Function
+async function resetPassword(newPassword) {
+    try {
+        const response = await fetch(`${API_URL}/reset-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newPassword })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to reset password');
+        }
+        
+        return { success: true, message: data.message };
+        
+    } catch (error) {
+        console.error('Reset password error:', error);
+        throw error;
+    }
+}
+
+// Handle Reset Password Form Submit
+function handleResetPasswordSubmit(event) {
+    event.preventDefault();
+    
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    const messageContainer = document.getElementById('messageContainer');
+    const messageAlert = document.getElementById('messageAlert');
+    
+    // Validate passwords match
+    if (newPassword !== confirmPassword) {
+        messageAlert.className = 'alert alert-danger';
+        messageAlert.textContent = 'Passwords do not match!';
+        messageContainer.style.display = 'block';
+        return;
+    }
+    
+    // Validate password length
+    if (newPassword.length < 6) {
+        messageAlert.className = 'alert alert-danger';
+        messageAlert.textContent = 'Password must be at least 6 characters long!';
+        messageContainer.style.display = 'block';
+        return;
+    }
+    
+    // Call reset password function
+    resetPassword(newPassword)
+        .then(response => {
+            messageAlert.className = 'alert alert-success';
+            messageAlert.textContent = 'Password reset successful! Redirecting to login...';
+            messageContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 2000);
+        })
+        .catch(error => {
+            messageAlert.className = 'alert alert-danger';
+            messageAlert.textContent = 'Error: ' + error.message;
+            messageContainer.style.display = 'block';
+        });
+}
     
 });

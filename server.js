@@ -129,6 +129,10 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+app.get('/reset-password', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'reset-password.html'));
+});
+
 app.get('/admin', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
@@ -152,31 +156,6 @@ app.post('/api/init-admin', async (req, res) => {
         const admin = new User({ username: 'admin', password: hashedPassword });
         await admin.save();
         res.json({ message: 'Admin user created successfully' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Reset admin password
-app.post('/api/reset-admin-password', async (req, res) => {
-    try {
-        const newPassword = process.env.ADMIN_PASSWORD || 'admin123';
-        const hashedPassword = await bcrypt.hash(newPassword, 10);
-        
-        const user = await User.findOneAndUpdate(
-            { username: 'admin' },
-            { password: hashedPassword },
-            { new: true }
-        );
-        
-        if (!user) {
-            return res.status(404).json({ message: 'Admin user not found' });
-        }
-        
-        res.json({ 
-            message: 'Admin password reset successfully',
-            note: 'You can now login with the password from your .env file'
-        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -222,6 +201,42 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+
+// Reset password API endpoint
+app.post('/api/reset-password', async (req, res) => {
+    try {
+        const { newPassword } = req.body;
+        
+        // Validate password
+        if (!newPassword || newPassword.length < 6) {
+            return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+        }
+        
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        
+        // Update admin user password
+        const user = await User.findOneAndUpdate(
+            { username: 'admin' },
+            { password: hashedPassword },
+            { new: true }
+        );
+        
+        if (!user) {
+            return res.status(404).json({ message: 'Admin user not found' });
+        }
+        
+        res.json({ 
+            message: 'Password reset successful! You can now login with your new password.'
+        });
+        
+    } catch (error) {
+        console.error('Reset password error:', error);
+        res.status(500).json({ message: 'Failed to reset password. Please try again.' });
+    }
+});
+
 
 // Logout
 app.post('/api/logout', (req, res) => {
